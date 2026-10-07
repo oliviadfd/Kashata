@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ভিডিও দেখতে Continue বাটনে ক্লিক করুন।">
+  <title>ভিডিও দেখুন — Continue করুন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="content-panel" aria-labelledby="page-heading">
+      <div class="preview-frame">
+        <img src="images/hero.jpg" alt="ভিডিও প্রিভিউ" class="preview-image">
+        <span class="preview-play" aria-hidden="true">▶</span>
+      </div>
+
+      <h1 id="page-heading" class="page-heading">
+        ভিডিও গুলো দেখতে এখনই continue বাটন click করুন
+      </h1>
+
+      <button id="openPopupButton" class="continue-button" type="button">
+        Continue <span aria-hidden="true">↗</span>
+      </button>
+    </section>
+  </main>
+
+  <div id="popup" class="popup-backdrop" hidden>
+    <div
+      class="popup-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="popupTitle"
+      aria-describedby="popupDescription"
+    >
+      <h2 id="popupTitle" class="popup-title">You're leaving our app</h2>
+      <p id="popupDescription" class="popup-description">
+        The website you're viewing is attempting to open an external app.
+        Would you like to continue?
+      </p>
+
+      <div class="popup-actions">
+        <button id="goBackButton" class="popup-button secondary-button" type="button">
+          Go back
+        </button>
+        <button id="continueButton" class="popup-button primary-button" type="button">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
