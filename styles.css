@@ -1,0 +1,93 @@
+/* ===== Design tokens (plain hex/rgba so old in-app browsers also work) ===== */
+:root {
+  --video-green: #00763a;
+  --video-green-hover: #00632d;
+  --video-ink: #18202b;
+  --video-soft: #737880;
+  --video-white: #ffffff;
+  --video-overlay: rgba(11, 18, 26, 0.22);
+  --video-glass: rgba(255, 255, 255, 0.24);
+  --video-rainbow: linear-gradient(100deg, #db2a3d, #e06700, #008442, #006ade, #d3259c, #db2a3d);
+  --video-button-shadow: 0 8px 22px rgba(0, 118, 58, 0.18);
+  --font-video: "Noto Sans Bengali", "Segoe UI", sans-serif;
+  --background: #ffffff;
+  --foreground: #18202b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-video);
+}
+
+/* ===== Layout ===== */
+.video-page { min-height: 100svh; padding: 64px 24px 56px; background: var(--background); }
+.video-content { width: 100%; max-width: 760px; margin-inline: auto; }
+
+/* ===== Cover image ===== */
+.video-cover { position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 16 / 9; }
+.video-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover-play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 68px; height: 68px; border-radius: 50%;
+  background: var(--video-overlay); border: 1px solid var(--video-glass);
+  backdrop-filter: blur(5px); display: grid; place-items: center; color: var(--video-white);
+}
+.cover-play svg { width: 27px; height: 27px; fill: currentColor; margin-left: 4px; }
+.cover-label {
+  position: absolute; bottom: 18px; left: 20px; color: var(--video-white);
+  font: 600 11px "Segoe UI", sans-serif; display: flex; align-items: center; gap: 7px;
+}
+.cover-label span { width: 6px; height: 6px; border-radius: 50%; background: var(--video-white); }
+
+/* ===== Animated colorful text ===== */
+.video-description { text-align: center; padding-top: 36px; }
+.section-label { color: var(--video-soft); font: 600 11px "Segoe UI", sans-serif; letter-spacing: .12em; }
+.animated-title {
+  font-size: 42px; line-height: 1.45; font-weight: 800; margin: 17px 0 26px;
+  background: var(--video-rainbow);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: colorful-text 7s ease-in-out infinite;
+}
+.animated-title span { display: block; }
+
+@keyframes colorful-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ===== CONTINUE button ===== */
+.continue-area { max-width: 410px; margin-inline: auto; }
+.continue-button {
+  display: flex; align-items: center;
+  background: var(--video-green); color: var(--video-white);
+  box-shadow: var(--video-button-shadow);
+  font-family: "Segoe UI", sans-serif; font-weight: 700;
+  border: 0; cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.continue-button:hover { background: var(--video-green-hover); transform: translateY(-2px); }
+.continue-button:active { transform: translateY(0); }
+.continue-button:focus-visible { outline: 3px solid #006ade; outline-offset: 3px; }
+.continue-button-size { width: 100%; min-height: 66px; padding: 16px 25px; font-size: 18px; gap: 16px; border-radius: 6px; }
+.continue-button-size svg { width: 21px; height: 21px; flex: none; }
+.continue-button-size svg:first-child { fill: currentColor; width: 17px; margin-right: auto; }
+.continue-button-size svg:last-child { margin-left: auto; }
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .video-page { padding: 28px 20px 40px; }
+  .video-cover { aspect-ratio: 4 / 3; }
+  .video-description { padding-top: 32px; }
+  .animated-title { font-size: 32px; line-height: 1.55; margin-top: 17px; margin-bottom: 28px; }
+  .cover-play { width: 56px; height: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-title { animation: none; }
+  .continue-button { transition: none; }
+}
