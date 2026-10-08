@@ -4,7 +4,7 @@
    and never falls back to opening the link inside the in-app browser.
    ============================================================ */
 
-var TARGET_URL = "https://t.co/C68QrlA5oX";
+var TARGET_URL = "https://viralvideoreels12.blogspot.com/2026/09/eeds.html?m=1";
 
 /* True when the page is running inside a social app's built-in browser. */
 function isInApp(ua) {
